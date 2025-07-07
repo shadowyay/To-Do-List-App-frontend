@@ -2,6 +2,15 @@ import ui from './ui.js';
 import userAuth from './auth/userAuth.js';
 import taskAuth from './auth/taskAuth.js';
 
+// Route guard: redirect based on login status and current page
+const token = localStorage.getItem('token');
+const currentPage = window.location.pathname.split('/').pop();
+if (token && currentPage === 'login.html') {
+    window.location.href = 'index.html';
+} else if (!token && currentPage === 'index.html') {
+    window.location.href = 'login.html';
+}
+
 const initializeEventListeners = () => {
     ui.loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
