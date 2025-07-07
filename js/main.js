@@ -14,14 +14,12 @@ if (token && currentPage === 'login.html') {
 if (currentPage === 'login.html') {
     ui.showRegister.addEventListener('click', (e) => {
         e.preventDefault();
-        ui.loginSection.classList.add('hidden');
-        ui.registerSection.classList.remove('hidden');
+        ui.showSection('register');
     });
 
     ui.showLogin.addEventListener('click', (e) => {
         e.preventDefault();
-        ui.registerSection.classList.add('hidden');
-        ui.loginSection.classList.remove('hidden');
+        ui.showSection('login');
     });
 }
 

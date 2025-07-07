@@ -12,7 +12,19 @@ const createTaskForm = document.getElementById('create-task');
 const showRegister = document.getElementById('show-register');
 const showLogin = document.getElementById('show-login');
 
+const showSection = (section) => {
+    loginSection.style.display = 'none';
+    registerSection.style.display = 'none';
+    tasksSection.style.display = 'none';
 
+    if (section === 'login') {
+        loginSection.style.display = 'block';
+    } else if (section === 'register') {
+        registerSection.style.display = 'block';
+    } else if (section === 'tasks') {
+        tasksSection.style.display = 'block';
+    }
+};
 
 const displayTasks = (tasks) => {
     taskList.innerHTML = '';
