@@ -7,8 +7,22 @@ const token = localStorage.getItem('token');
 const currentPage = window.location.pathname.split('/').pop();
 if (token && currentPage === 'login.html') {
     window.location.href = 'index.html';
-} else if (!token && currentPage === 'index.html') {
+}if (!token && currentPage === 'index.html') {
     window.location.href = 'login.html';
+}
+
+if (currentPage === 'login.html') {
+    ui.showRegister.addEventListener('click', (e) => {
+        e.preventDefault();
+        loginSection.classList.add('hidden');
+        registerSection.classList.remove('hidden');
+    });
+
+    ui.showLogin.addEventListener('click', (e) => {
+        e.preventDefault();
+        registerView.classList.add('hidden');
+        loginView.classList.remove('hidden');
+    });
 }
 
 const initializeEventListeners = () => {
@@ -44,19 +58,7 @@ const initializeEventListeners = () => {
         }
     });
 
-    ui.logoutBtn.addEventListener('click', () => {
-        userAuth.logout();
-    });
-
-    ui.showRegister.addEventListener('click', (e) => {
-        e.preventDefault();
-        ui.showSection(ui.registerSection);
-    });
-
-    ui.showLogin.addEventListener('click', (e) => {
-        e.preventDefault();
-        ui.showSection(ui.loginSection);
-    });
+    
 };
 
 const main = {
