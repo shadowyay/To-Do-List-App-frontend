@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0 ">
+    <title>To-Do-List App</title>
+    <link rel = "stylesheet" , href = "../css/style.css">
+    <script type="module" src = "../js/main.js"></script>
+    <script type="module">
+        import main from '../js/main.js';
+        document.addEventListener('DOMContentLoaded', main.init);
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Welcome, <span id="username"></span></h1>
+        <button id="logout-btn" style="display: none;">Logout</button>
+    </header>
+    <main>
+        <section id="tasks-section">
+            <section>
+                <form id="create-task">
+                    <input type="text" id="task-name" placeholder="Task Name" required>
+                    <button type="submit" id="submit-task">Create</button>
+                </form>
+            </section>
+            <section>
+                <ul id="task-list"></ul>
+            </section>
+        </section>
+    </main>
+</body>
+</html>

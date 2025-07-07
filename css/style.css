@@ -1,0 +1,241 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --accent-color: #28a745;
+    --text-color: #333;
+    --background-color: #f0f2f5;
+    --card-background: #ffffff;
+    --border-color: #e0e0e0;
+    --shadow-light: rgba(0, 0, 0, 0.08);
+    --shadow-strong: rgba(0, 0, 0, 0.15);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1.2rem 0;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 12px var(--shadow-strong);
+    margin-bottom: 25px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.8rem;
+    font-weight: 600;
+}
+
+main {
+    flex-grow: 1;
+    width: 100%;
+    max-width: 700px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+section {
+    background-color: var(--card-background);
+    padding: 35px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px var(--shadow-light);
+    border: 1px solid var(--border-color);
+}
+
+h2 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 14px 18px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1.05rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fdfdfd;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.15);
+}
+
+button[type="submit"],
+#logout-button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.15rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+button[type="submit"]:hover,
+#logout-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 123, 255, 0.3);
+}
+
+button[type="submit"]:active,
+#logout-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+}
+
+p {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.98rem;
+    color: #555;
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+}
+
+#task-list li {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px var(--shadow-light);
+    transition: transform 0.2s ease;
+}
+
+#task-list li:hover {
+    transform: translateY(-3px);
+}
+
+#task-list li span {
+    flex-grow: 1;
+    font-size: 1.15rem;
+    color: var(--text-color);
+}
+
+#task-list li button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin-left: 15px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+}
+
+#task-list li button:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+}
+
+#task-list li button.edit-btn {
+    background-color: var(--accent-color);
+    margin-right: 10px;
+}
+
+#task-list li button.edit-btn:hover {
+    background-color: #218838;
+}
+
+#task-list li button.delete-btn {
+    background-color: #dc3545;
+}
+
+#task-list li button.delete-btn:hover {
+    background-color: #c82333;
+}
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.2rem;
+    }
+
+    section {
+        padding: 25px;
+    }
+
+    h2 {
+        font-size: 1.7rem;
+    }
+
+    button[type="submit"],
+    #logout-button {
+        padding: 12px 20px;
+        font-size: 1.05rem;
+    }
+
+    #task-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+    }
+
+    #task-list li span {
+        margin-bottom: 10px;
+        font-size: 1.05rem;
+    }
+
+    #task-list li button {
+        margin-top: 5px;
+        margin-left: 0;
+        width: 100%;
+    }
+} 
