@@ -12,6 +12,7 @@ if (token && currentPage === 'login.html') {
 }
 
 if (currentPage === 'login.html') {
+    ui.showSection('login');
     ui.showRegister.addEventListener('click', (e) => {
         e.preventDefault();
         ui.showSection('register');
