@@ -76,7 +76,7 @@ const main = {
                 initializeLoginRegisterEventListeners();
             } else if (currentPage === 'index.html') {
                 initializeTaskEventListeners();
-                userAuth.checkLogin(); // Only check login if on tasks page
+                userAuth.checkLogin(); 
             }
         });
     }

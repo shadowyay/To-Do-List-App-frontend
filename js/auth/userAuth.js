@@ -42,7 +42,6 @@ const login = async (email, password) => {
     }
 };
 
-
 const checkLogin = async () => {
     const token = localStorage.getItem('token');
     if (token) {

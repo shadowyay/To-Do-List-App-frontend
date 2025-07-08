@@ -93,7 +93,8 @@ input[type="password"]:focus {
 }
 
 button[type="submit"],
-#logout-btn {
+
+#submit-task {
     background-color: var(--primary-color);
     color: white;
     padding: 14px 25px;
@@ -106,6 +107,22 @@ button[type="submit"],
     box-sizing: border-box;
     font-weight: 600;
     box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+    
+}
+#logout-btn {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 14px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.15rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    width: 10%;
+    box-sizing: border-box;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+    margin-left: 1%;
 }
 
 button[type="submit"]:hover,
