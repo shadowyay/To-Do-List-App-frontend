@@ -6,11 +6,11 @@ const handleRouting = () => {
     const token = localStorage.getItem('token');
     const currentPage = window.location.pathname.split('/').pop();
     if (token && currentPage === 'login.html') {
-        window.location.href = 'html/index.html';
+        window.location.href = 'index.html';
         return;
     }
     if (!token && currentPage === 'index.html') {
-        window.location.href = 'html/login.html';
+        window.location.href = 'login.html';
         return;
     }
 };
