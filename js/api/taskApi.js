@@ -1,4 +1,4 @@
-const API_URL = "https://to-do-list-app-xsqu.onrender.com"
+const API_URL = "https://to-do-list-app-xsqu.onrender.com/api"
 
 const createTask = async (taskName, token) => {
     const response = await fetch(`${API_URL}/tasks`, {

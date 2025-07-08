@@ -29,6 +29,13 @@ const displayTasks = (tasks) => {
     });
 };
 
+const showSection = (section) => {
+    loginSection.classList.add('hidden');
+    registerSection.classList.add('hidden');
+    tasksSection.classList.add('hidden');
+    section.classList.remove('hidden');
+};
+
 const ui = {
     loginSection,
     registerSection,
@@ -42,6 +49,7 @@ const ui = {
     showRegister,
     showLogin,
     displayTasks,
+    showSection,
 };
 
 export default ui;
