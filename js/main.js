@@ -27,7 +27,7 @@ ui.showLogin.addEventListener("click",(e)=>{
     ui.registerSection.classList.add("hidden");
 });
 
-const initializeEventListeners = () => {
+const initializeLoginRegisterEventListeners = () => {
     ui.loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const email = document.getElementById('login-email').value;
@@ -37,12 +37,15 @@ const initializeEventListeners = () => {
 
     ui.registerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+        console.log("Register form submitted.");
         const username = document.getElementById('register-name').value;
         const email = document.getElementById('register-email').value;
         const password = document.getElementById('register-password').value;
         await userAuth.register(username, email, password);
     });
+};
 
+const initializeTaskEventListeners = () => {
     ui.createTaskForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const taskName = document.getElementById('task-name').value;
@@ -59,18 +62,24 @@ const initializeEventListeners = () => {
             await taskAuth.updateTask(id, newTaskName);
         }
     });
-
-    
 };
 
 const main = {
     init: () => {
         document.addEventListener('DOMContentLoaded', () => {
+            console.log("DOM Content Loaded. Initializing event listeners.");
             handleRouting();
-            initializeEventListeners();
-            userAuth.checkLogin();
+            const currentPage = window.location.pathname.split('/').pop();
+            if (currentPage === 'login.html') {
+                initializeLoginRegisterEventListeners();
+            } else if (currentPage === 'index.html') {
+                initializeTaskEventListeners();
+                userAuth.checkLogin(); // Only check login if on tasks page
+            }
         });
     }
 };
 
 export default main;
+
+main.init();
