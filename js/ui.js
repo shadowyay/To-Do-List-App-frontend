@@ -30,10 +30,18 @@ const displayTasks = (tasks) => {
 };
 
 const showSection = (section) => {
-    loginSection.classList.add('hidden');
-    registerSection.classList.add('hidden');
-    tasksSection.classList.add('hidden');
-    section.classList.remove('hidden');
+    if (loginSection) {
+        loginSection.classList.add('hidden');
+    }
+    if (registerSection) {
+        registerSection.classList.add('hidden');
+    }
+    if (tasksSection) {
+        tasksSection.classList.add('hidden');
+    }
+    if (section) {
+        section.classList.remove('hidden');
+    }
 };
 
 const ui = {

@@ -1,5 +1,6 @@
 import userApi from '../api/userApi.js';
 import ui from '../ui.js';
+import taskAuth from './taskAuth.js';
 
 const register = async (username, email, password) => {
     try {
@@ -22,13 +23,22 @@ const login = async (email, password) => {
         if (response.ok) {
             const data = await response.json();
             localStorage.setItem('token', data.accessToken);
-            await checkLogin();
+            console.log("Login successful, token received:", data.accessToken);
+            window.location.href = 'index.html';
         } else {
-            alert('Login failed: Invalid email or password');
+            const errorText = await response.text();
+            let errorMessage = 'Invalid email or password';
+            try {
+                const errorJson = JSON.parse(errorText);
+                errorMessage = errorJson.message || errorMessage;
+            } catch (e) {
+                // If errorText is not JSON, use the default message
+            }
+            console.error('Login failed:', response.status, errorText);
+            alert(`Login failed: ${errorMessage}`);
         }
     } catch (error) {
         console.error('Error logging in:', error);
-        alert('Error logging in');
     }
 };
 
@@ -36,6 +46,10 @@ const login = async (email, password) => {
 const checkLogin = async () => {
     const token = localStorage.getItem('token');
     if (token) {
+        if (window.location.pathname.endsWith('login.html')) {
+            window.location.href = 'index.html';
+            return;
+        }
         try {
             const response = await userApi.checkCurrentUser(token);
             if (response.ok) {
@@ -43,8 +57,10 @@ const checkLogin = async () => {
                 ui.usernameSpan.textContent = user.username;
                 ui.showSection(ui.tasksSection);
                 ui.logoutBtn.style.display = 'block';
-                await fetchAndDisplayTasks();
+                await taskAuth.fetchAndDisplayTasks();
             } else {
+                const errorText = await response.text();
+                console.error('Check login failed:', response.status, errorText);
                 localStorage.removeItem('token');
                 ui.showSection(ui.loginSection);
                 ui.logoutBtn.style.display = 'none';
@@ -63,8 +79,7 @@ const checkLogin = async () => {
 
 const logout = () => {
     localStorage.removeItem('token');
-    ui.showSection(ui.loginSection);
-    ui.logoutBtn.style.display = 'none';
+    window.location.href = 'login.html';
 };
 
 const userAuth = {
